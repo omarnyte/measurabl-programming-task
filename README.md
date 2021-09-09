@@ -41,3 +41,8 @@ This project uses Github Actions for CI/CD. The worfklow will:
 2. Follow the [setup](#setup) steps outlined above.
 3. Make your changes, ensuring that code coverage remains at 100%.
 4. Open a pull request documenting your changes. Please ensure that that GitHub Actions workflow succeeds. 
+
+## Deployment
+- Production: https://measurabl-programming-task.herokuapp.com
+
+This repo's `main` branch automatically deploys to Heroku after the GitHub Actions workflow succeeds.
