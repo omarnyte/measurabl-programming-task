@@ -2,7 +2,6 @@ import { AgesResponse, NamesResponse } from './types';
 
 export const combineData = (agesResponse: AgesResponse, namesResponse: NamesResponse) => {
 	const combinedData = new Map<string, {
-    // TODO: abstract type
 		age?: number;
 		id: string;
 		firstName?: string;

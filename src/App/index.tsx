@@ -1,41 +1,44 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 
 import { API_AGES, API_NAMES } from '../constants';
-import { combineData } from './utils';
+import dataFetchReducer from './dataFetchReducer';
 
 import './index.css';
 
+const initialState = {
+  hasError: false,
+  isLoading: false,
+}
+
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState<{
-    // TODO: abstract type
-    age?: number;
-    id: string;
-    firstName?: string;
-    lastName?: string;
-  }[]>([]);
+  const [state, dispatch] = useReducer(dataFetchReducer, initialState);
+  
   
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true);
+      dispatch({ type: 'START_FETCH' });
       const agesResponse = await fetch(API_AGES);
       const ageResponseJSON = await agesResponse.json();
 
       const namesResponse = await fetch(API_NAMES);
       const namesResponseJSON = await namesResponse.json();
 
-      const combinedData = combineData(ageResponseJSON, namesResponseJSON) 
-      setData(Array.from(combinedData.values()))
-      setIsLoading(false);
+      dispatch({
+        type: 'HANDLE_FETCH_SUCCESS',
+        payload: {
+          agesResponse: ageResponseJSON,
+          namesResponse: namesResponseJSON,
+        }
+      });
     }
 
     fetchData();
   }, []);
-  
+
   return (
     <div className="App">
-      {isLoading && <span>Loading...</span>}
-      {!isLoading && data && (
+      {state.isLoading && <span>Loading...</span>}
+      {!state.isLoading && state.data && (
         <table>
           <thead>
             <tr>
@@ -46,7 +49,7 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {data.map((row) => (
+            {state.data.map((row) => (
               <tr key={row.id}>
                 <td>{row.id}</td>
                 <td>{row.firstName}</td>
