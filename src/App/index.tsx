@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import { API_AGES, API_NAMES } from './constants';
+import { API_AGES, API_NAMES } from '../constants';
 
-import './App.css';
+import './index.css';
 
 type AgesResponse = {
   age: number;

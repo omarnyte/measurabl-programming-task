@@ -1,7 +1,7 @@
 import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
-import { server } from './mocks/server.js'
+import { server } from '../mocks/server.js'
 
-import App from './App';
+import App from '.';
 
 beforeAll(() => server.listen())
 afterEach(() => server.resetHandlers())
