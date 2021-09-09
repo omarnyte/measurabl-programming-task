@@ -13,7 +13,6 @@ const initialState = {
 function App() {
   const [state, dispatch] = useReducer(dataFetchReducer, initialState);
   
-  
   useEffect(() => {
     const fetchData = async () => {
       dispatch({ type: 'START_FETCH' });
