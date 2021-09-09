@@ -1,26 +1,19 @@
 import { useEffect, useState } from 'react';
 
 import { API_AGES, API_NAMES } from '../constants';
+import { combineData } from './utils';
 
 import './index.css';
 
-type AgesResponse = {
-  age: number;
-  id: string;
-}[];
-
-type NamesResponse = {
-  firstName: string;
-  id: string;
-  lastName: string;
-}[];
-
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState<{ 
-    ages: AgesResponse;
-    names: NamesResponse;
-  } | undefined>(undefined);
+  const [data, setData] = useState<{
+    // TODO: abstract type
+    age?: number;
+    id: string;
+    firstName?: string;
+    lastName?: string;
+  }[]>([]);
   
   useEffect(() => {
     const fetchData = async () => {
@@ -31,10 +24,8 @@ function App() {
       const namesResponse = await fetch(API_NAMES);
       const namesResponseJSON = await namesResponse.json();
 
-      setData({
-        ages: ageResponseJSON,
-        names: namesResponseJSON,
-      });
+      const combinedData = combineData(ageResponseJSON, namesResponseJSON) 
+      setData(Array.from(combinedData.values()))
       setIsLoading(false);
     }
 
@@ -55,11 +46,12 @@ function App() {
             </tr>
           </thead>
           <tbody>
-            {data.names.map((name) => (
-              <tr key={name.id}>
-                <td>{name.id}</td>
-                <td>{name.firstName}</td>
-                <td>{name.lastName}</td>
+            {data.map((row) => (
+              <tr key={row.id}>
+                <td>{row.id}</td>
+                <td>{row.firstName}</td>
+                <td>{row.lastName}</td>
+                <td>{row.age}</td>
               </tr>
             ))}
           </tbody>
