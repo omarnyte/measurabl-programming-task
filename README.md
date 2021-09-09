@@ -1,5 +1,7 @@
 # Measurabl Programming Task
-This single-page React web app fetches, combines, and renders some sample table data. 
+[![Node.js CI](https://github.com/omarnyte/measurabl-programming-task/actions/workflows/test.yml/badge.svg)](https://github.com/omarnyte/measurabl-programming-task/actions/workflows/test.yml)
+
+This single-page React web app fetches, combines, and renders some sample table data. The app is deployed at https://measurabl-programming-task.herokuapp.com. 
 
 ## Local Development
 
