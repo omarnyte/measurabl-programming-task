@@ -1,5 +1,7 @@
 # Measurabl Programming Task
-This single-page React web app fetches, combines, and renders some sample table data. 
+[![Node.js CI](https://github.com/omarnyte/measurabl-programming-task/actions/workflows/test.yml/badge.svg)](https://github.com/omarnyte/measurabl-programming-task/actions/workflows/test.yml)
+
+This single-page React web app fetches, combines, and renders some sample table data. The app is deployed at https://measurabl-programming-task.herokuapp.com. 
 
 ## Local Development
 
@@ -39,3 +41,8 @@ This project uses Github Actions for CI/CD. The worfklow will:
 2. Follow the [setup](#setup) steps outlined above.
 3. Make your changes, ensuring that code coverage remains at 100%.
 4. Open a pull request documenting your changes. Please ensure that that GitHub Actions workflow succeeds. 
+
+## Deployment
+- Production: https://measurabl-programming-task.herokuapp.com
+
+This repo's `main` branch automatically deploys to Heroku after the GitHub Actions workflow succeeds.
