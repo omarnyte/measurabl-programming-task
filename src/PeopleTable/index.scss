@@ -1,0 +1,19 @@
+table {
+	margin-top: 16px;
+  border-collapse: collapse;
+  border: 1px solid black;
+	width: 80%;
+}
+
+td,th {
+	padding: 8px;
+
+	&.left-align {
+		text-align: left;
+	}
+
+	&.right-align {
+		text-align: right;
+	}
+}
+
