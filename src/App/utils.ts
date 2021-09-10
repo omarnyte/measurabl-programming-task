@@ -21,5 +21,5 @@ export const combineData = (agesResponse: AgesResponse, namesResponse: NamesResp
 		}
 	});
 
-	return combinedData;
+	return Array.from(combinedData.values());
 }

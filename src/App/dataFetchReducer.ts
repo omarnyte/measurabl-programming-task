@@ -31,8 +31,7 @@ const dataFetchReducer = (state: State, action: Action): State => {
       }
     case 'HANDLE_FETCH_SUCCESS':
 			const { agesResponse, namesResponse } = action.payload;
-			const combinedData = combineData(agesResponse, namesResponse);
-			const data = Array.from(combinedData.values());
+			const data = combineData(agesResponse, namesResponse);
 
       return { 
         ...state,
