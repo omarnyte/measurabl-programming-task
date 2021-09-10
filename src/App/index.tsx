@@ -37,6 +37,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>People</h1>
       {state.isLoading && <span>Loading...</span>}
       {!state.isLoading && state.data && (
         <PeopleTable rows={state.data} />

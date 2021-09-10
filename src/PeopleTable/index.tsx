@@ -1,3 +1,5 @@
+import './index.scss';
+
 type PeopleTableProps = {
 	rows: {
 		age?: number;
@@ -12,10 +14,10 @@ const PeopleTable = ({ rows }: PeopleTableProps) => {
 		<table>
 			<thead>
 				<tr>
-					<th>ID</th>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Age</th>
+					<th className="left-align">ID</th>
+					<th className="left-align">First Name</th>
+					<th className="left-align">Last Name</th>
+					<th className="right-align">Age</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -23,10 +25,10 @@ const PeopleTable = ({ rows }: PeopleTableProps) => {
 					const { age, id, firstName, lastName } = row;
 					return (
 						<tr key={id}>
-							<td>{id}</td>
-							<td>{firstName ? firstName : '-'}</td>
-							<td>{firstName ? lastName : '-'}</td>
-							<td>{age ? age : '-'}</td>
+							<td className="left-align">{id}</td>
+							<td className="left-align">{firstName ? firstName : '-'}</td>
+							<td className="left-align">{firstName ? lastName : '-'}</td>
+							<td className="right-align">{age ? age : '-'}</td>
 						</tr>
 					);
 				})}
