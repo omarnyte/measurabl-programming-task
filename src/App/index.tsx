@@ -2,6 +2,7 @@ import { useEffect, useReducer } from 'react';
 
 import { API_AGES, API_NAMES } from '../constants';
 import dataFetchReducer from './dataFetchReducer';
+import PeopleTable from '../PeopleTable';
 
 import './index.css';
 
@@ -38,26 +39,7 @@ function App() {
     <div className="App">
       {state.isLoading && <span>Loading...</span>}
       {!state.isLoading && state.data && (
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Age</th>
-            </tr>
-          </thead>
-          <tbody>
-            {state.data.map((row) => (
-              <tr key={row.id}>
-                <td>{row.id}</td>
-                <td>{row.firstName}</td>
-                <td>{row.lastName}</td>
-                <td>{row.age}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <PeopleTable rows={state.data} />
       )}
     </div>
   );
